@@ -1,9 +1,9 @@
 package br.com.sudv.enfermeiros.crud.controller;
 
-import br.com.sudv.enfermeiros.crud.model.Ala;
-import br.com.sudv.enfermeiros.crud.model.Enfermeiro;
-import br.com.sudv.enfermeiros.crud.model.Escalacao;
-import br.com.sudv.enfermeiros.crud.model.Escala;
+import br.com.sudv.enfermeiros.crud.data.model.Ala;
+import br.com.sudv.enfermeiros.crud.data.model.Enfermeiro;
+import br.com.sudv.enfermeiros.crud.data.model.Escalacao;
+import br.com.sudv.enfermeiros.crud.data.model.Escala;
 import br.com.sudv.enfermeiros.crud.repository.AlaRepository;
 import br.com.sudv.enfermeiros.crud.repository.CriteriaEscalaRepository;
 import br.com.sudv.enfermeiros.crud.repository.EnfermeiroRepository;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/escalas")
@@ -63,7 +62,7 @@ public class EscalaController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") int id, Model model) {
+    public String deleteUser(@PathVariable("id") Long id, Model model) {
         Escala escala = escalaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Id da escala invalido:" + id));
         escalaRepository.delete(escala);

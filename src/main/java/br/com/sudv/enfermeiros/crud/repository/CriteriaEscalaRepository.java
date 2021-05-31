@@ -1,7 +1,7 @@
 package br.com.sudv.enfermeiros.crud.repository;
 
-import br.com.sudv.enfermeiros.crud.model.Escalacao;
-import br.com.sudv.enfermeiros.crud.model.Escala;
+import br.com.sudv.enfermeiros.crud.data.model.Escalacao;
+import br.com.sudv.enfermeiros.crud.data.model.Escala;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;

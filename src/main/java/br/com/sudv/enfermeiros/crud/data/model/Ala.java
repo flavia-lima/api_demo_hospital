@@ -1,4 +1,4 @@
-package br.com.sudv.enfermeiros.crud.model;
+package br.com.sudv.enfermeiros.crud.data.model;
 
 import lombok.Data;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public class Ala {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public Long id;
 
     @Column(nullable = false, length = 80)
     public String nome;

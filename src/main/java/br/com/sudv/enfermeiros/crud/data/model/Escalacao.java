@@ -1,4 +1,4 @@
-package br.com.sudv.enfermeiros.crud.model;
+package br.com.sudv.enfermeiros.crud.data.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,5 +18,5 @@ public class Escalacao {
     private String nomeEnfermeiro;
     private String coren;
     @Id
-    private int idEscala;
+    private Long idEscala;
 }

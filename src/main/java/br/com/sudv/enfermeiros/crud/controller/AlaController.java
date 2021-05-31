@@ -1,6 +1,6 @@
 package br.com.sudv.enfermeiros.crud.controller;
 
-import br.com.sudv.enfermeiros.crud.model.Ala;
+import br.com.sudv.enfermeiros.crud.data.model.Ala;
 import br.com.sudv.enfermeiros.crud.repository.AlaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,14 +45,14 @@ public class AlaController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") int id, Model model) {
+    public String deleteUser(@PathVariable("id") Long id, Model model) {
         Ala ala = alaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Id do ala invalido:" + id));
         alaRepository.delete(ala);
         return "redirect:/alas";
     }
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") int id, @Valid Ala ala,
+    public String updateUser(@PathVariable("id") Long id, @Valid Ala ala,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             ala.setId(id);
@@ -65,7 +65,7 @@ public class AlaController {
 
 
     @GetMapping("/update-ala/{id}")
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         Ala ala = alaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Id da ala invalido:" + id));
 

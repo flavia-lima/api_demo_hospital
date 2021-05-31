@@ -1,4 +1,4 @@
-package br.com.sudv.enfermeiros.crud.model;
+package br.com.sudv.enfermeiros.crud.data.model;
 
 import lombok.Data;
 import lombok.Getter;
@@ -15,13 +15,13 @@ public class Escala {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public Long id;
 
     @Column(name = "id_ala")
-    public int idAla;
+    public Long idAla;
 
     @Column(name = "id_enfermeiro")
-    public int idEnfermeiro;
+    public Long idEnfermeiro;
 
 
     @OneToOne(fetch = FetchType.LAZY)

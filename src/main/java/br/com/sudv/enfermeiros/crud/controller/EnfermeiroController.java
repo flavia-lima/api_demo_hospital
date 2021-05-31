@@ -1,14 +1,11 @@
 package br.com.sudv.enfermeiros.crud.controller;
 
-import br.com.sudv.enfermeiros.crud.model.Enfermeiro;
+import br.com.sudv.enfermeiros.crud.data.model.Enfermeiro;
 import br.com.sudv.enfermeiros.crud.repository.EnfermeiroRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -44,15 +41,15 @@ public class EnfermeiroController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") int id, Model model) {
+    public String deleteUser(@PathVariable("id") Long id, Model model) {
         Enfermeiro enfermeiro = enfermeiroRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Id do enfermeiro invalido:" + id));
         enfermeiroRepository.delete(enfermeiro);
         return "redirect:/enfermeiros";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") int id, @Valid Enfermeiro enfermeiro,
+    @PutMapping("/update/{id}")
+    public String updateUser(@PathVariable("id") Long id, @Valid Enfermeiro enfermeiro,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             enfermeiro.setId(id);
@@ -65,7 +62,7 @@ public class EnfermeiroController {
 
 
     @GetMapping("/update-enfermeiro/{id}")
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         Enfermeiro enfermeiro = enfermeiroRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Id do enfermeiro invalido:" + id));
 
