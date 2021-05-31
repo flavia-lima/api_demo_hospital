@@ -1,0 +1,40 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Adicionar Escala</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+<div class="container">
+    <h2 class="text-center">Adicionar Escala</h2>
+    <div class="row">
+        <div class="col">
+            <form action="#" th:action="@{/escalas/addescala}" th:object="${escalacao}" method="post">
+                <label for="ala">Ala</label>
+                <input type="text" th:field="*{ala}" id="ala" placeholder="Ala">
+                <span th:if="${#fields.hasErrors('ala')}" th:errors="*{ala}"></span>
+                <label for="andar">Andar</label>
+                <input type="text" th:field="*{andar}" id="andar" placeholder="Andar">
+                <span th:if="${#fields.hasErrors('andar')}" th:errors="*{andar}"></span>
+                <label for="nomeEnfermeiro">Enfermeiro</label>
+                <input type="text" th:field="*{nomeEnfermeiro}" id="nomeEnfermeiro" placeholder="Enfermeiro">
+                <span th:if="${#fields.hasErrors('nomeEnfermeiro')}" th:errors="*{nomeEnfermeiro}"></span>
+                <label for="coren">COREN</label>
+                <input type="text" th:field="*{coren}" id="coren" placeholder="COREN">
+                <span th:if="${#fields.hasErrors('coren')}" th:errors="*{coren}"></span>
+                <input type="submit" value="Adicionar Escala">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CRUD- enfermeiro</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+
+    <div th:switch="${enfermeiros}" xmlns:th="http://www.w3.org/1999/xhtml">
+        <div class="container">
+            <h2 class="text-center">Enfermeiros</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col" style="width: 74px;">ID</th>
+                    <th class="col" style="width: 74px;">Nome</th>
+                    <th class="col" style="width: 74px;">Email</th>
+                    <th class="col" style="width: 74px;">COREN</th>
+                    <th class="col" style="width: 74px;">Editar</th>
+                    <th class="col" style="width: 74px;">Deletar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="enfermeiro : ${enfermeiros}">
+                    <td th:text="${enfermeiro.id}"></td>
+                    <td th:text="${enfermeiro.nome}"></td>
+                    <td th:text="${enfermeiro.email}"></td>
+                    <td th:text="${enfermeiro.coren}"></td>
+                    <td><a class="btn btn-primary" th:href="@{/enfermeiros/update-enfermeiro/{id}(id=${enfermeiro.id})}">Editar</a></td>
+                    <td><a class="btn btn-danger" th:href="@{/enfermeiros/delete/{id}(id=${enfermeiro.id})}">Deletar</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p><a href="/enfermeiros/novo-enfermeiro">Adicionar novo enfermeiro</a></p>
+        </div>
+    </div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

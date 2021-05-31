@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Gerenciamento de Alas</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+
+    <div th:switch="${alas}" xmlns:th="http://www.w3.org/1999/xhtml">
+        <div class="container">
+            <h2 class="text-center">Escalas</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col" style="width: 74px;">ID</th>
+                    <th class="col" style="width: 74px;">Ala</th>
+                    <th class="col" style="width: 74px;">Andar</th>
+                    <th class="col" style="width: 74px;">Enfermeiro</th>
+                    <th class="col" style="width: 74px;">Coren</th>
+                    <th class="col" style="width: 74px;">Deletar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="escala : ${escalas}">
+                    <td th:text="${escala.idEscala}"></td>
+                    <td th:text="${escala.ala}"></td>
+                    <td th:text="${escala.andar}"></td>
+                    <td th:text="${escala.nomeEnfermeiro}"></td>
+                    <td th:text="${escala.coren}"></td>
+                    <td><a class="btn btn-danger" th:href="@{/escalas/delete/{id}(id=${escala.idEscala})}">Deletar</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p><a href="/escalas/nova-escala">Adicionar nova escala</a></p>
+        </div>
+    </div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
