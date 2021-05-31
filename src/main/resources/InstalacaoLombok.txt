@@ -1,0 +1,10 @@
+Instalação do Lombok->
+
+-Ir em Help
+	-Install New Software
+
+No campo 'Work with:' Colocar a =URL 'https://projectlombok.org/p2'
+
+Selecionar o lombok, instalar e aceitar os termos.
+
+Reiniciar o eclipse
